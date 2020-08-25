@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Update user</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- IonIcons -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/adminlte.min.css') }}">
+    <style>
+        .button{
+            border: 1px solid black;
+width: 25%;
+color: black;
+background-color: #f6b928;
+justify-content: center;
+    align-items: center;
+text-align: center;
+display: flex;
+border-radius: 5px;
+    height: 40px;
+    margin-bottom: 5px !update account;
+        }
+        .button2 {
+         border: 1px solid black;
+width: 25%;
+color: white;
+background-color: #353942;
+justify-content: center;
+border-radius: 5px;
+    height: 40px;
+    align-items: center;
+text-align: center;
+display: flex;
+        }
+        .button2:hover{
+        color: #f6b928 !important;
+        }
+         .button:hover{
+        color: white !important;
+        }
+        .custom-card{
+        background-color: unset;
+        border: 0px;
+        box-shadow: none;
+
+        }
+
+
+    </style>
+</head>
+<!--
+`body` tag options:
+
+  Apply one or more of the following classes to to the body tag
+  to get the desired effect
+
+  * sidebar-collapse
+  * sidebar-mini
+-->
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <!-- Navbar -->
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">account setting</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card custom-card">
+                            <div class="card-header border-0">
+                                <div class="d-flex justify-content-between">
+                                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                                        {% block content %}
+                                        <div class="info">
+                                            <h5 class="account-heading">{{ current_user.username }}</h5>
+                                        </div>
+                                        {% endblock content %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex">
+                                </div>
+                                <!-- /.d-flex -->
+                                <a href="{{ url_for('users/updateusr') }}" class="nav-link button">
+                                    <p class="text" style="margin: 0px">Update account</p>
+                                </a>
+                                <!-- /.d-flex -->
+                                <a href="{{ url_for('users/resetusrpass') }}" class="nav-link button2">
+                                    <p class="text" style="margin: 0px">Reset password</p>
+                                </a>
+                                <div class="position-relative mb-4">
+                                </div>
+
+                                <div class="d-flex flex-row justify-content-end">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col-md-6 -->
+                    <div class="col-lg-6">
+                        <div class="card" style="min-height: 300px !important">
+                            <div class="card-header border-0">
+                                <div class="d-flex justify-content-between">
+
+                                    <h1>API</h1>
+
+                                </div>
+                                <!-- /.d-flex -->
+
+                                <div class="position-relative mb-4">
+                                    <p>This is key you can use to programmatically update your sites</p>
+                                    <p>or account setting via CDN API. Make sure to keep it safe</p>
+                                    <input placeholder="input here" style="width:100% !important"/>
+                                    <a href="#" class="nav-link button" style="width:100%;margin-bottom:5px">
+                                        <p class="text" style="margin: 0px">reset API key Access </p>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- /.card -->
+
+                        <!-- /.col-md-6 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <div class="row">
+                    <div class=".col-md-12" style="width: 100% !important">
+                        <div class="card custom-card">
+                            <div class="card-header border-0">
+                                <div class="d-flex justify-content-between">
+
+
+                                    <h1 style="color:#68737f">TWO-FACTOR AUTHENTICATION</h1>
+                                </div>
+                                <!-- /.d-flex -->
+
+                                <div class="position-relative mb-4">
+                                    <p>two-factor authentication adds an extra layer of security to your account.You need to install an <br/> application below on your mobile</p>
+                                </div>
+
+                                <div class="d-flex flex-row justify-content-end">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=".col-md-12" style="width: 100% !important">
+                        <div class="card">
+                            <div class="card-header border-0">
+                                <div class="d-flex justify-content-between">
+
+                                    <h1 style="color: #bc6582">EMAIL NOT VERIFIED</h1>
+
+                                </div>
+                                <!-- /.d-flex -->
+
+                                <div class="position-relative mb-4">
+                                    <p>To enable Two-Factor authentication, please verify your email address.<a href="#" style="color:#e3d89b;">Resend confirmation email</a></p>
+                                </div>
+
+                                <div class="d-flex flex-row justify-content-end">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
+
+            <!-- Main Footer -->
+
+            <!-- ./wrapper -->
+
+            <!-- REQUIRED SCRIPTS -->
+
+            <!-- jQuery -->
+            <script src="{{ url_for('static', filename='plugins/jquery/jquery.min.js') }}"></script>
+            <!-- Bootstrap -->
+            <script src="{{ url_for('static', filename='plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+            <!-- AdminLTE -->
+            <script src="{{ url_for('static', filename='dist/js/adminlte.js') }}"></script>
+
+            <!-- OPTIONAL SCRIPTS -->
+            <script src="{{ url_for('static', filename='plugins/chart.js/Chart.min.js') }}"></script>
+            <!-- AdminLTE for demo purposes -->
+            <script src="{{ url_for('static', filename='dist/js/demo.js') }}"></script>
+            <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+            <script src="{{ url_for('static', filename='dist/js/pages/dashboard3.js') }}"></script>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
