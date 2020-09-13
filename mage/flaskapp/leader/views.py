@@ -2,7 +2,7 @@ from flask import abort, flash, redirect, render_template, url_for, request
 from flask_login import current_user, login_required
 from . import leader
 from .forms import DepartmentForm, RoleForm, EmployeeAssignForm
-from ..models import Department, Role, Employee
+from ..models import Department, Role, Employee, user_role
 from .. import db
 
 
@@ -158,11 +158,12 @@ def delete_employee(emp_id):
 @login_required
 def assign_employee(id):
     check_leader()
-    employee = Employee.query.get_or_404(id)
+    id = user_role.select([user_role.c.emp_id])
+    employee = conn.execute(id)
     form = EmployeeAssignForm()
     if form.validate_on_submit():
-        role = Role(role_id=form.data.get('role').role_id)
-        employee.role.append(role)
+        employee.role = form.role.data
+        employee.user = form.user.data
         db.session.add(employee)
         db.session.commit()
         flash('You have successfully assigned role to employee')
