@@ -18,10 +18,7 @@ class RoleForm(FlaskForm):
     submit = SubmitField('Create')
 
 
-def possible_role():
-    return Role.query.all()
-
-
 class EmployeeAssignForm(FlaskForm):
-    role = QuerySelectField(query_factory=possible_role, get_label='role_id')
+    role = QuerySelectField(query_factory=lambda: Role.query.all(), get_label='role_name')
+    user = QuerySelectField(query_factory=lambda: Employee.query.all(), get_label='emp_id')
     submit = SubmitField('Submit')
